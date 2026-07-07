@@ -7,12 +7,14 @@ import Charts from './components/Charts';
 import MetricsTable from './components/MetricsTable';
 import EquationSection from './components/EquationSection';
 import OverviewPage from './components/OverviewPage';
+import AIAdvisor from './components/AIAdvisor';
 import { usePerformancePrediction } from './hooks/usePerformancePrediction';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<'overview' | 'simulator'>('overview');
 
   const {
+    inputs,
     outputs,
     velocityChartData,
     regTempChartData,
@@ -50,6 +52,7 @@ export function App() {
                 {/* RIGHT Column: Outputs and ML Info (7/12) */}
                 <div className="lg:col-span-7 w-full space-y-6">
                   <PredictionPanel outputs={outputs} />
+                  {outputs && <AIAdvisor inputs={inputs} outputs={outputs} />}
                   <MetricsTable metrics={mlMetrics} />
                 </div>
               </div>
