@@ -15,7 +15,7 @@ export function Footer() {
         {/* Supervision & Date */}
         <div className="md:text-right text-[12px] text-[#6B7280]">
           <p>
-            <span className="font-medium text-[#2D3748]">Project Advisor:</span> Dr. Lakshmikant
+            <span className="font-medium text-[#2D3748]">Project Advisor:</span> Dr. Laxmikant Yadav
           </p>
           <p className="mt-0.5">
             © {new Date().getFullYear()} — Engineering Simulation System

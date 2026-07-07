@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
 
@@ -5,7 +6,12 @@ interface OverviewPageProps {
   onLaunchSimulator: () => void;
 }
 
+const AVATAR_FALLBACK = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><rect width='60' height='60' fill='%23E9ECEF'/><path d='M30 32c5.5 0 10-4.5 10-10S35.5 12 30 12s-10 4.5-10 10 4.5 10 10 10zm0 4c-7.7 0-14 6.3-14 14h28c0-7.7-6.3-14-14-14z' fill='%236B7280'/></svg>";
+
 export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
+  const [studentImg, setStudentImg] = useState('/student.jpg');
+  const [profImg, setProfImg] = useState('/professor.jpg');
+
   return (
     <div className="space-y-8 animate-fade-in text-left">
       
@@ -51,7 +57,7 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
                   Project Explainer Video
                 </h4>
                 <p className="text-[11px] text-[#6B7280] max-w-[280px]">
-                  Presented by <b>Ashish Ranjan</b>, NIT Hamirpur. Guided by <b>Dr. Lakshmikant</b>.
+                  Presented by <b>Ashish Ranjan</b>, NIT Hamirpur. Guided by <b>Dr. Laxmikant Yadav</b>.
                 </p>
                 
                 {/* Real Video Element Placeholder */}
@@ -81,7 +87,7 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
               This simulator and machine learning surrogate system was developed as a 
               <b> Summer Research Internship Project</b> by <b>Ashish Ranjan</b>, a 3rd-year 
               Mechanical Engineering student at the <b>National Institute of Technology, Hamirpur (NIT Hamirpur)</b>, 
-              under the expert supervision of <b>Dr. Lakshmikant</b>.
+              under the expert supervision of <b>Dr. Laxmikant Yadav</b>.
             </p>
             <p>
               Solid desiccant wheels are critical components in advanced HVAC systems, providing energy-efficient 
@@ -99,17 +105,36 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
 
         <Card title="Research Personnel">
           <div className="space-y-4 text-[14px]">
-            <div>
-              <span className="text-[11px] font-semibold text-[#6B7280] uppercase tracking-wider block">Lead Researcher</span>
-              <p className="font-bold text-[#2D3748] text-[15px] mt-0.5">Ashish Ranjan</p>
-              <p className="text-[#6B7280] text-[12.5px] mt-0.5">3rd Year, B.Tech Mechanical Engineering</p>
-              <p className="text-[#6B7280] text-[12.5px]">National Institute of Technology, Hamirpur</p>
+            {/* Student */}
+            <div className="flex gap-3 items-center">
+              <img
+                src={studentImg}
+                onError={() => setStudentImg(AVATAR_FALLBACK)}
+                alt="Ashish Ranjan"
+                className="w-[60px] h-[60px] rounded-[4px] border border-[#D6D9DE] object-cover bg-[#E9ECEF] shrink-0"
+              />
+              <div>
+                <span className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wider block">Lead Researcher</span>
+                <p className="font-bold text-[#2D3748] text-[14px] mt-0.5">Ashish Ranjan</p>
+                <p className="text-[#6B7280] text-[11.5px] leading-tight">3rd Year, B.Tech Mech. Eng.</p>
+                <p className="text-[#6B7280] text-[11px]">NIT Hamirpur</p>
+              </div>
             </div>
-            <div className="border-t border-[#D6D9DE] pt-3">
-              <span className="text-[11px] font-semibold text-[#6B7280] uppercase tracking-wider block">Project Supervisor</span>
-              <p className="font-bold text-[#2D3748] text-[15px] mt-0.5">Dr. Lakshmikant</p>
-              <p className="text-[#6B7280] text-[12.5px] mt-0.5">Thermal Energy Systems Division</p>
-              <p className="text-[#6B7280] text-[12.5px]">Department of Mechanical Engineering</p>
+            
+            {/* Professor */}
+            <div className="flex gap-3 items-center border-t border-[#D6D9DE] pt-3">
+              <img
+                src={profImg}
+                onError={() => setProfImg(AVATAR_FALLBACK)}
+                alt="Dr. Laxmikant Yadav"
+                className="w-[60px] h-[60px] rounded-[4px] border border-[#D6D9DE] object-cover bg-[#E9ECEF] shrink-0"
+              />
+              <div>
+                <span className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wider block">Project Supervisor</span>
+                <p className="font-bold text-[#2D3748] text-[14px] mt-0.5">Dr. Laxmikant Yadav</p>
+                <p className="text-[#6B7280] text-[11.5px] leading-tight">Assistant Professor, Mech. Eng.</p>
+                <p className="text-[#6B7280] text-[11px]">NIT Hamirpur</p>
+              </div>
             </div>
           </div>
         </Card>
