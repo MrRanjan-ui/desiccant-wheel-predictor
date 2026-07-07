@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --color-primary-blue: #1E4E79;
+  --color-dark-navy: #243447;
+  --color-bg-gray: #F2F4F7;
+  --color-bg-gray-secondary: #E9ECEF;
+  --color-border-gray: #D6D9DE;
+  --color-text-main: #2D3748;
+  --color-text-secondary: #6B7280;
+  --color-success-green: #2E7D32;
+  --color-warning-amber: #D97706;
+  --color-error-red: #C62828;
+}
+
+/* Custom CSS overrides to align with clean engineering system constraints */
+html, body {
+  background-color: #F2F4F7;
+  color: #2D3748;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  border: none;
+  background: transparent;
+  min-height: auto;
+  display: block;
+}
+
+/* Print optimizations for industrial documentation utility */
+@media print {
+  body {
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
