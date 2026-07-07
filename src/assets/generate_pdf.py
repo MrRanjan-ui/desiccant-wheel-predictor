@@ -22,7 +22,7 @@ def draw_slide_decorations(canvas, doc):
     
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(colors.HexColor("#6B7280"))
-    canvas.drawString(280, 28, "Summer Internship Research Project | Advisor: Dr. A. K. Sharma")
+    canvas.drawString(280, 28, "Summer Internship Research Project | Advisor: Dr. Lakshmikant")
     canvas.drawRightString(756, 28, f"Slide {doc.page} of 7")
     canvas.restoreState()
 
@@ -122,7 +122,7 @@ def build_presentation_pdf(output_filename):
     meta_data = [
         [Paragraph("<b>Research Internship:</b>", body_style), Paragraph("Thermal Energy Systems Laboratory", body_style)],
         [Paragraph("<b>Department:</b>", body_style), Paragraph("Department of Mechanical Engineering", body_style)],
-        [Paragraph("<b>Academic Advisor:</b>", body_style), Paragraph("Dr. A. K. Sharma (Associate Professor)", body_style)],
+        [Paragraph("<b>Academic Advisor:</b>", body_style), Paragraph("Dr. Lakshmikant", body_style)],
         [Paragraph("<b>Software Stack:</b>", body_style), Paragraph("Vite, React, TypeScript, Tailwind CSS v4, Random Forest", body_style)]
     ]
     meta_table = Table(meta_data, colWidths=[150, 300])
