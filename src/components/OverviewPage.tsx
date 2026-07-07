@@ -105,24 +105,8 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
 
         <Card title="Research Personnel">
           <div className="space-y-4 text-[14px]">
-            {/* Student */}
-            <div className="flex gap-3 items-center">
-              <img
-                src={studentImg}
-                onError={() => setStudentImg(AVATAR_FALLBACK)}
-                alt="Ashish Ranjan"
-                className="w-[60px] h-[60px] rounded-[4px] border border-[#D6D9DE] object-cover bg-[#E9ECEF] shrink-0"
-              />
-              <div>
-                <span className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wider block">Lead Researcher</span>
-                <p className="font-bold text-[#2D3748] text-[14px] mt-0.5">Ashish Ranjan</p>
-                <p className="text-[#6B7280] text-[11.5px] leading-tight">3rd Year, B.Tech Mech. Eng.</p>
-                <p className="text-[#6B7280] text-[11px]">NIT Hamirpur</p>
-              </div>
-            </div>
-            
             {/* Professor */}
-            <div className="flex gap-3 items-center border-t border-[#D6D9DE] pt-3">
+            <div className="flex gap-3 items-center">
               <img
                 src={profImg}
                 onError={() => setProfImg(AVATAR_FALLBACK)}
@@ -133,6 +117,22 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
                 <span className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wider block">Project Supervisor</span>
                 <p className="font-bold text-[#2D3748] text-[14px] mt-0.5">Dr. Laxmikant Yadav</p>
                 <p className="text-[#6B7280] text-[11.5px] leading-tight">Assistant Professor, Mech. Eng.</p>
+                <p className="text-[#6B7280] text-[11px]">NIT Hamirpur</p>
+              </div>
+            </div>
+
+            {/* Student */}
+            <div className="flex gap-3 items-center border-t border-[#D6D9DE] pt-3">
+              <img
+                src={studentImg}
+                onError={() => setStudentImg(AVATAR_FALLBACK)}
+                alt="Ashish Ranjan"
+                className="w-[60px] h-[60px] rounded-[4px] border border-[#D6D9DE] object-cover bg-[#E9ECEF] shrink-0"
+              />
+              <div>
+                <span className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wider block">Lead Researcher</span>
+                <p className="font-bold text-[#2D3748] text-[14px] mt-0.5">Ashish Ranjan</p>
+                <p className="text-[#6B7280] text-[11.5px] leading-tight">3rd Year, B.Tech Mech. Eng.</p>
                 <p className="text-[#6B7280] text-[11px]">NIT Hamirpur</p>
               </div>
             </div>
