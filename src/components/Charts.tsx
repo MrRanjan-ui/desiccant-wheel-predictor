@@ -11,7 +11,6 @@ import {
 } from 'chart.js';
 import type { ChartOptions } from 'chart.js';
 import type { ChartSeries } from '../types';
-import { Card } from '../ui/Card';
 
 // Register Chart.js components
 ChartJS.register(
@@ -185,28 +184,48 @@ export function Charts({ velocityData, regTempData }: ChartsProps) {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-      
-      {/* Velocity Sweep Chart */}
-      <Card
-        title="Air Velocity Sensitivity Curve"
-        subtitle="Tradeoff between moisture removal effectiveness and hydraulic resistance head-loss"
-      >
-        <div className="h-[300px] w-full relative">
-          <Line data={velocityChartContent} options={velocityOptions} />
+    <div className="border border-[#D6D9DE] rounded-[4px] bg-white shadow-sm overflow-hidden mt-6 select-none font-sans">
+      <div className="border-b border-[#D6D9DE] px-4 py-3 bg-[#E9ECEF]">
+        <h3 className="text-[14px] font-bold text-[#2D3748] uppercase tracking-wider">
+          📈 Sensitivity Analysis Sweep Console
+        </h3>
+        <p className="text-[11px] text-[#6B7280] mt-0.5 font-normal">
+          Multi-variable parametric sweeps indicating thermodynamic limits and trade-offs
+        </p>
+      </div>
+      <div className="p-5 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 lg:divide-x lg:divide-[#D6D9DE]">
+        
+        {/* Velocity Sweep Chart */}
+        <div className="space-y-3 lg:pr-6">
+          <div>
+            <h4 className="text-[14px] font-bold text-[#2D3748]">
+              Air Velocity Sensitivity Curves
+            </h4>
+            <p className="text-[11px] text-[#6B7280]">
+              Trade-off between moisture removal ratio (g/kg) and hydraulic resistance pressure loss (Pa)
+            </p>
+          </div>
+          <div className="h-[300px] w-full relative">
+            <Line data={velocityChartContent} options={velocityOptions} />
+          </div>
         </div>
-      </Card>
 
-      {/* Reg Temp Sweep Chart */}
-      <Card
-        title="Regeneration Temperature Sensitivities"
-        subtitle="Impact of reactivation heat on process stream discharge dryness and carryover temperature"
-      >
-        <div className="h-[300px] w-full relative">
-          <Line data={tempChartContent} options={tempOptions} />
+        {/* Reg Temp Sweep Chart */}
+        <div className="space-y-3 lg:pl-6">
+          <div>
+            <h4 className="text-[14px] font-bold text-[#2D3748]">
+              Regeneration Temperature Sensitivities
+            </h4>
+            <p className="text-[11px] text-[#6B7280]">
+              Impact of reactivation heat on discharge moisture ratio (g/kg) and carryover temperature rise (°C)
+            </p>
+          </div>
+          <div className="h-[300px] w-full relative">
+            <Line data={tempChartContent} options={tempOptions} />
+          </div>
         </div>
-      </Card>
-      
+        
+      </div>
     </div>
   );
 }

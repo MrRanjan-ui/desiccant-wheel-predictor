@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { PredictionInputs, PredictionOutputs } from '../types';
-import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
 
 interface AIAdvisorProps {
@@ -108,77 +107,84 @@ export function AIAdvisor({ inputs, outputs }: AIAdvisorProps) {
   };
 
   return (
-    <Card title="AI Thermal Design Advisor">
-      <div className="space-y-4 text-left">
-        {!advice && !loading && (
-          <div className="space-y-3">
-            <p className="text-[13px] text-[#6B7280]">
-              Query the Gemini generative AI model to analyze your current cycle states, check efficiency bounds, and receive physical optimization advice.
-            </p>
-            
-            {/* API Status Notice */}
-            {!apiKeySet && (
-              <div className="p-3 bg-[#FFF9E6] border border-[#FFE0B2] text-[#B78103] text-[12px] rounded-[4px] font-sans">
-                <b>💡 Offline Mode:</b> No VITE_GEMINI_API_KEY detected in the environment. Clicking "Analyze Cycle" will display local rule-based warning metrics. To activate active AI analysis, configure the variable in Vercel or locally.
-              </div>
-            )}
-            
-            <div className="pt-1">
-              <Button 
-                variant="primary" 
-                onClick={apiKeySet ? handleAIAnalysis : () => setAdvice(getOfflineAdvice())}
-                className="text-[13px] px-4 py-2"
-              >
-                {apiKeySet ? 'Analyze Cycle with Gemini AI' : 'Run Offline Advisor Analysis'}
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {loading && (
-          <div className="flex items-center gap-3 py-4 text-[13px] text-[#1E4E79] font-medium">
-            {/* Spinning Indicator */}
-            <svg className="animate-spin h-5 w-5 text-[#1E4E79]" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-            </svg>
-            Generating thermal system analysis...
-          </div>
-        )}
-
-        {error && (
-          <div className="p-3 bg-[#FFEBEE] border border-[#FFCDD2] text-[#C62828] text-[13px] rounded-[4px]">
-            <b>Error:</b> {error}
-          </div>
-        )}
-
-        {advice && (
-          <div className="space-y-3 animate-fade-in text-[13px] leading-relaxed text-[#2D3748]">
-            <div className="bg-[#F8F9FA] border border-[#D6D9DE] rounded-[4px] p-3 font-sans whitespace-pre-line shadow-inner">
-              {advice}
-            </div>
-            <div className="flex gap-3">
-              <Button 
-                variant="secondary" 
-                onClick={() => setAdvice('')} 
-                className="text-[12px] px-3 py-1.5"
-              >
-                Reset Analysis
-              </Button>
-              {apiKeySet && (
+    <div className="flex flex-col bg-white select-none border-t border-[#D6D9DE]">
+      <div className="border-b border-[#D6D9DE] px-4 py-3 bg-[#E9ECEF]">
+        <h3 className="text-[14px] font-bold text-[#2D3748] uppercase tracking-wider">
+          🤖 AI Thermal Design Advisor
+        </h3>
+      </div>
+      <div className="p-5">
+        <div className="space-y-4 text-left">
+          {!advice && !loading && (
+            <div className="space-y-3">
+              <p className="text-[13px] text-[#6B7280]">
+                Query the Gemini generative AI model to analyze your current cycle states, check efficiency bounds, and receive physical optimization advice.
+              </p>
+              
+              {/* API Status Notice */}
+              {!apiKeySet && (
+                <div className="p-3 bg-[#FFF9E6] border border-[#FFE0B2] text-[#B78103] text-[12px] rounded-[4px] font-sans">
+                  <b>💡 Offline Mode:</b> No VITE_GEMINI_API_KEY detected in the environment. Clicking "Analyze Cycle" will display local rule-based warning metrics. To activate active AI analysis, configure the variable in Vercel or locally.
+                </div>
+              )}
+              
+              <div className="pt-1">
                 <Button 
                   variant="primary" 
-                  onClick={handleAIAnalysis} 
+                  onClick={apiKeySet ? handleAIAnalysis : () => setAdvice(getOfflineAdvice())}
+                  className="text-[13px] px-4 py-2"
+                >
+                  {apiKeySet ? 'Analyze Cycle with Gemini AI' : 'Run Offline Advisor Analysis'}
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {loading && (
+            <div className="flex items-center gap-3 py-4 text-[13px] text-[#1E4E79] font-medium font-sans">
+              {/* Spinning Indicator */}
+              <svg className="animate-spin h-5 w-5 text-[#1E4E79]" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              </svg>
+              Generating thermal system analysis...
+            </div>
+          )}
+
+          {error && (
+            <div className="p-3 bg-[#FFEBEE] border border-[#FFCDD2] text-[#C62828] text-[13px] rounded-[4px] font-sans">
+              <b>Error:</b> {error}
+            </div>
+          )}
+
+          {advice && (
+            <div className="space-y-3 animate-fade-in text-[13px] leading-relaxed text-[#2D3748]">
+              <div className="bg-[#F8F9FA] border border-[#D6D9DE] rounded-[4px] p-3 font-sans whitespace-pre-line shadow-inner">
+                {advice}
+              </div>
+              <div className="flex gap-3 font-sans">
+                <Button 
+                  variant="secondary" 
+                  onClick={() => setAdvice('')} 
                   className="text-[12px] px-3 py-1.5"
                 >
-                  Recalculate
+                  Reset Analysis
                 </Button>
-              )}
+                {apiKeySet && (
+                  <Button 
+                    variant="primary" 
+                    onClick={handleAIAnalysis} 
+                    className="text-[12px] px-3 py-1.5"
+                  >
+                    Recalculate
+                  </Button>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </Card>
+    </div>
   );
 }
 export default AIAdvisor;

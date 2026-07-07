@@ -38,10 +38,10 @@ export function App() {
           ) : (
             // Simulator View
             <div className="space-y-6">
-              {/* Main Grid: Inputs and Predictions */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                {/* LEFT Column: Inputs (5/12) */}
-                <div className="lg:col-span-5 w-full">
+              {/* Unified Engineering Workbench */}
+              <div className="border border-[#D6D9DE] rounded-[4px] bg-white shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-[#D6D9DE]">
+                {/* LEFT Pane: Controls (5/12) */}
+                <div className="lg:col-span-5 h-full">
                   <InputForm
                     onSubmit={calculate}
                     onReset={reset}
@@ -49,8 +49,8 @@ export function App() {
                   />
                 </div>
 
-                {/* RIGHT Column: Outputs and ML Info (7/12) */}
-                <div className="lg:col-span-7 w-full space-y-6">
+                {/* RIGHT Pane: Output Console (7/12) */}
+                <div className="lg:col-span-7 h-full flex flex-col bg-white">
                   <PredictionPanel outputs={outputs} />
                   {outputs && <AIAdvisor inputs={inputs} outputs={outputs} />}
                   <MetricsTable metrics={mlMetrics} />
