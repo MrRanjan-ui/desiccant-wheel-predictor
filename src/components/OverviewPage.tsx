@@ -9,7 +9,7 @@ interface OverviewPageProps {
 const AVATAR_FALLBACK = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><rect width='60' height='60' fill='%23E9ECEF'/><path d='M30 32c5.5 0 10-4.5 10-10S35.5 12 30 12s-10 4.5-10 10 4.5 10 10 10zm0 4c-7.7 0-14 6.3-14 14h28c0-7.7-6.3-14-14-14z' fill='%236B7280'/></svg>";
 
 export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
-  const [studentImg, setStudentImg] = useState('/student.jpg');
+  const [studentImg, setStudentImg] = useState('/student.jpeg');
   const [profImg, setProfImg] = useState('/professor.jpg');
 
   return (
