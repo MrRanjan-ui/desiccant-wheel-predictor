@@ -43,7 +43,7 @@ export function AIAdvisor({ inputs, outputs }: AIAdvisorProps) {
     }
     
     if (warnings.length === 0) {
-      return "✅ System parameters are operating within balanced, optimal ranges. To run deep generative AI physics analyses, please configure the `VITE_GEMINI_API_KEY` key.";
+      return "✅ System parameters are operating within balanced, optimal ranges. To run deep generative AI physics analyses, please configure the LLM API key.";
     }
     return warnings.join('\n\n');
   };
@@ -100,7 +100,7 @@ export function AIAdvisor({ inputs, outputs }: AIAdvisorProps) {
       setAdvice(response.text());
     } catch (err: any) {
       console.error(err);
-      setError(err?.message || 'Failed to generate AI advice from Gemini.');
+      setError(err?.message || 'Failed to generate AI advice from the LLM API.');
     } finally {
       setLoading(false);
     }
@@ -118,7 +118,7 @@ export function AIAdvisor({ inputs, outputs }: AIAdvisorProps) {
           {!advice && !loading && (
             <div className="space-y-3">
               <p className="text-[13px] text-[#6B7280]">
-                Query the Gemini generative AI model to analyze your current cycle states, check efficiency bounds, and receive physical optimization advice.
+                Query the Large Language Model (LLM) API to analyze your current cycle states, check efficiency bounds, and receive physical optimization advice.
               </p>
               
               {/* API Status Notice */}
@@ -134,7 +134,7 @@ export function AIAdvisor({ inputs, outputs }: AIAdvisorProps) {
                   onClick={apiKeySet ? handleAIAnalysis : () => setAdvice(getOfflineAdvice())}
                   className="text-[13px] px-4 py-2"
                 >
-                  {apiKeySet ? 'Analyze Cycle with Gemini AI' : 'Run Offline Advisor Analysis'}
+                  {apiKeySet ? 'Analyze Cycle with LLM API' : 'Run Offline Advisor Analysis'}
                 </Button>
               </div>
             </div>

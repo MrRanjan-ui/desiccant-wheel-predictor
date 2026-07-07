@@ -136,7 +136,7 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
               </div>
               <div className="bg-white border border-[#D6D9DE] p-3 rounded-[4px] shadow-sm">
                 <span className="font-bold text-[#1E4E79] block mb-1">5. AI Analysis</span>
-                System feeds the input-output states into Gemini Pro via API to fetch optimization diagnostics.
+                System feeds the input-output states into the Large Language Model (LLM) API to fetch optimization diagnostics.
               </div>
             </div>
           </div>
