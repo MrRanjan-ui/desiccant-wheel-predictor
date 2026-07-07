@@ -12,6 +12,8 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
   const [studentImg, setStudentImg] = useState('/student.jpeg');
   const [profImg, setProfImg] = useState('/professor.jpg');
 
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <div className="space-y-8 animate-fade-in text-left">
       
@@ -64,16 +66,22 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
                 <video 
                   id="project-explainer-video"
                   controls 
-                  className="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity bg-black"
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity bg-black ${
+                    isPlaying 
+                      ? 'opacity-100' 
+                      : 'opacity-0 group-hover:opacity-100 focus:opacity-100'
+                  }`}
                   poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'></svg>"
                 >
-                  <source src="explainer_video.mp4" type="video/mp4" />
+                  <source src="/Desiccant_Wheel_Models.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
             </div>
             <div className="text-[10px] text-center text-[#6B7280] mt-1.5 italic">
-              * Note: Record your explainer video, save it as "explainer_video.mp4" in the project folder, and it will play directly in this frame.
+              * Note: Click the play overlay to start the explainer video.
             </div>
           </div>
         </div>
