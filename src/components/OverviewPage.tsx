@@ -12,82 +12,93 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
   const [studentImg, setStudentImg] = useState('/student.jpeg');
   const [profImg, setProfImg] = useState('/professor.jpg');
 
-  const [isPlaying, setIsPlaying] = useState(false);
-
   return (
     <div className="space-y-8 animate-fade-in text-left">
       
       {/* 1. HERO SECTION */}
-      <section className="bg-white border border-[#D6D9DE] rounded-[6px] p-6 sm:p-8 shadow-sm">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Text */}
-          <div className="lg:col-span-7 space-y-4">
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-[4px] text-[12px] font-semibold bg-[#E9ECEF] text-[#1E4E79] border border-[#D6D9DE]">
-              Mechanical Engineering Research Project
+      <section className="bg-white border border-[#D6D9DE] border-l-4 border-l-[#1E4E79] rounded-r-[6px] rounded-l-[2px] p-8 shadow-sm">
+        <div className="space-y-6">
+          <div className="space-y-2">
+            <span className="inline-flex items-center px-2.5 py-1 rounded-[4px] text-[11px] font-bold bg-[#E9ECEF] text-[#1E4E79] border border-[#D6D9DE] uppercase tracking-wider">
+              NIT Hamirpur — Department of Mechanical Engineering
             </span>
-            <h2 className="text-[28px] sm:text-[34px] font-extrabold text-[#243447] leading-tight tracking-tight">
-              Advanced Rotary Dehumidification Predictor
+            <h2 className="text-[30px] sm:text-[36px] font-black text-[#243447] leading-tight tracking-tight">
+              Rotary Desiccant Wheel <span className="text-[#1E4E79]">Performance Predictor</span>
             </h2>
-            <p className="text-[16px] text-[#6B7280] leading-relaxed">
-              Accelerating system design and cycle optimization through a physics-informed Machine Learning surrogate model. Run multi-parameter sweeps and view psychrometric states in milliseconds.
+            <p className="text-[15.5px] text-[#5A6A80] max-w-[850px] leading-relaxed">
+              An advanced thermal systems design portal featuring a <b>Physics-Informed ML Surrogate</b>. 
+              Emulates coupled heat and mass transfer governing PDEs instantaneously, enabling real-time multi-variable sensitivity sweeps and cycle optimization.
             </p>
-            <div className="flex gap-4 pt-2">
-              <Button variant="primary" onClick={onLaunchSimulator} className="px-6 py-2.5 text-[15px]">
-                Launch Interactive Simulator
-              </Button>
-              <a 
-                href="#about" 
-                className="px-4 py-2.5 text-[15px] font-medium text-[#2D3748] hover:text-[#1E4E79] hover:bg-[#E9ECEF] border border-transparent rounded-[4px] transition-colors flex items-center justify-center"
-              >
-                Learn More
-              </a>
-            </div>
           </div>
-          
-          {/* Right Video Placeholder Frame */}
-          <div className="lg:col-span-5 w-full">
-            <div className="border border-[#D6D9DE] rounded-[4px] overflow-hidden bg-[#E9ECEF] shadow-inner relative group">
-              <div className="aspect-video w-full flex flex-col items-center justify-center p-6 text-center">
-                {/* Visual Explainer Video Overlay */}
-                <div className="w-12 h-12 rounded-full bg-[#1E4E79] flex items-center justify-center text-white mb-3 shadow-md group-hover:scale-105 transition-transform cursor-pointer">
-                  {/* Play Icon representation */}
-                  <svg className="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-                <h4 className="text-[14px] font-bold text-[#2D3748] mb-1">
-                  Project Explainer Video
-                </h4>
-                <p className="text-[11px] text-[#6B7280] max-w-[280px]">
-                  Presented by <b>Ashish Ranjan</b>, NIT Hamirpur. Guided by <b>Dr. Laxmikant Yadav</b>.
-                </p>
-                
-                {/* Real Video Element Placeholder */}
-                <video 
-                  id="project-explainer-video"
-                  controls 
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity bg-black ${
-                    isPlaying 
-                      ? 'opacity-100' 
-                      : 'opacity-0 group-hover:opacity-100 focus:opacity-100'
-                  }`}
-                  poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'></svg>"
-                >
-                  <source src="/Desiccant_Wheel_Models.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+
+          {/* Low-profile Technical Specifications Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[650px] pt-2">
+            <div className="bg-[#F8FAFC] border border-[#E2E8F0] p-3 rounded-[4px] flex items-center gap-3">
+              <span className="text-xl">⚡</span>
+              <div>
+                <span className="text-[11px] text-[#718096] uppercase font-bold block">Execution Latency</span>
+                <span className="text-[14px] font-bold text-[#2D3748]">&lt; 0.02 Milliseconds</span>
               </div>
             </div>
-            <div className="text-[10px] text-center text-[#6B7280] mt-1.5 italic">
-              * Note: Click the play overlay to start the explainer video.
+            <div className="bg-[#F8FAFC] border border-[#E2E8F0] p-3 rounded-[4px] flex items-center gap-3">
+              <span className="text-xl">🎯</span>
+              <div>
+                <span className="text-[11px] text-[#718096] uppercase font-bold block">Predictive Accuracy</span>
+                <span className="text-[14px] font-bold text-[#2D3748]">95.6% R² Validation</span>
+              </div>
             </div>
+            <div className="bg-[#F8FAFC] border border-[#E2E8F0] p-3 rounded-[4px] flex items-center gap-3">
+              <span className="text-xl">⚙️</span>
+              <div>
+                <span className="text-[11px] text-[#718096] uppercase font-bold block">Solver Engine</span>
+                <span className="text-[14px] font-bold text-[#2D3748]">Physics-ML Hybrid</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-4 pt-2">
+            <Button variant="primary" onClick={onLaunchSimulator} className="px-6 py-2.5 text-[15px] font-semibold hover:scale-[1.01] transition-transform shadow-sm">
+              Launch Interactive Simulator
+            </Button>
+            <a 
+              href="#video-presentation" 
+              className="px-5 py-2.5 text-[15px] font-semibold text-[#2D3748] hover:text-[#1E4E79] hover:bg-[#F2F4F7] border border-[#D6D9DE] rounded-[4px] transition-colors flex items-center justify-center bg-white shadow-sm"
+            >
+              Watch Video Presentation
+            </a>
           </div>
         </div>
       </section>
 
-      {/* 2. ABOUT THE PROJECT */}
+      {/* 2. DEDICATED PROJECT VIDEO PRESENTATION SECTION */}
+      <section id="video-presentation" className="bg-white border border-[#D6D9DE] rounded-[6px] p-6 shadow-sm space-y-4">
+        <div className="border-b border-[#D6D9DE] pb-3 text-center sm:text-left">
+          <h3 className="text-[20px] font-bold text-[#1E4E79]">
+            Project Explainer Video
+          </h3>
+          <p className="text-[13.5px] text-[#6B7280] mt-1">
+            Presented by <b>Ashish Ranjan</b> (NIT Hamirpur). Guided by <b>Dr. Laxmikant Yadav</b>.
+          </p>
+        </div>
+        
+        {/* Large Centered Video Player */}
+        <div className="max-w-[900px] mx-auto border border-[#D6D9DE] rounded-[4px] overflow-hidden bg-black shadow-md">
+          <video 
+            id="project-explainer-video"
+            controls 
+            className="w-full h-full aspect-video object-cover"
+            poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'></svg>"
+          >
+            <source src="/Desiccant_Wheel_Models.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <p className="text-[12px] text-center text-[#6B7280] italic">
+          * Shows the full physics analysis, modeling challenges, and machine learning surrogate implementation.
+        </p>
+      </section>
+
+      {/* 3. ABOUT THE PROJECT */}
       <section id="about" className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card title="Academic Context" className="md:col-span-2">
           <div className="space-y-3 text-[14.5px] leading-relaxed text-[#2D3748]">
@@ -148,7 +159,7 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
         </Card>
       </section>
 
-      {/* 3. WORKING PHYSICS */}
+      {/* 4. WORKING PHYSICS */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card title="Working Physics & Adsorption Cycle">
           <div className="space-y-3 text-[14px] leading-relaxed text-[#2D3748]">
@@ -194,7 +205,7 @@ export function OverviewPage({ onLaunchSimulator }: OverviewPageProps) {
         </Card>
       </section>
 
-      {/* 4. DESIGN SENSITIVITY AND TRADE-OFFS */}
+      {/* 5. DESIGN SENSITIVITY AND TRADE-OFFS */}
       <section className="bg-white border border-[#D6D9DE] rounded-[6px] p-5 shadow-sm">
         <h3 className="text-[18px] font-bold text-[#1E4E79] mb-4 pb-1 border-b border-[#D6D9DE]">
           Engineering Optimization & Operational Trade-offs
